@@ -2,7 +2,6 @@
 export interface SensorData {
   temperature: number;
   humidity: number;
-  tank_volume_liters: number;
-  tank_volume_percent: number;
+  volume: number;
   timestamp: number;
 }
