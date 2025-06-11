@@ -18,6 +18,16 @@ app.get("/data", (req: Request, res: Response) => {
   }
 });
 
+app.get("/irrigation/status", (req: Request, res: Response) => {
+  const latestData: SensorData | null = mqttService.getLatestData();
+  if (latestData) {
+    const shouldIrrigate = latestData.humidity < 30;
+    res.json({ active: shouldIrrigate });
+  } else {
+    res.status(404).json({ error: "No data available" });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Edge API listening on port ${PORT}`);
