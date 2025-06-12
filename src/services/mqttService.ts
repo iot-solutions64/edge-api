@@ -29,7 +29,9 @@ export class MqttService {
       const data = JSON.parse(message.toString());
       this.latestData = { ...data, timestamp: Date.now() };
       console.log("Received MQTT data:", this.latestData);
-      // await sendDataToBackend(this.latestData); // Desactivado temporalmente
+      if (this.latestData) {
+        await sendDataToBackend(this.latestData);
+      }
     } catch (e) {
       console.error("Error parsing MQTT message:", e);
     }
