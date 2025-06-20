@@ -1,7 +1,10 @@
 import mqtt, { MqttClient } from "mqtt";
+import dotenv from "dotenv";
 import { MQTT_BROKER, MQTT_TOPIC } from "../constants/mqtt";
 import { SensorData } from "../types/sensor";
 import { sendDataToBackend } from "./backendService";
+
+dotenv.config();
 
 export class MqttService {
   private client: MqttClient;
