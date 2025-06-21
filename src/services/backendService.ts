@@ -4,7 +4,8 @@ import {
   TEMPERATURE_ENDPOINT,
   HUMIDITY_ENDPOINT,
   VOLUME_ENDPOINT,
-  THRESHOLDS_ENDPOINT
+  THRESHOLDS_ENDPOINT,
+  IOT_DATA_ENDPOINT
 } from "../constants/backend";
 import { SensorData } from "../types/sensor";
 
@@ -21,7 +22,7 @@ export async function sendDataToBackend(data: SensorData): Promise<void> {
     await axios.patch(VOLUME_ENDPOINT, { waterAmount: data.volume });
     console.log("Volumen enviado al backend Spring Boot");
 
-    await axios.post(`${process.env.BACKEND_URL}/api/v1/iot/data`, {
+    await axios.post(IOT_DATA_ENDPOINT, {
       temperature: data.temperature,
       humidity: data.humidity,
       volume: data.volume,
@@ -37,7 +38,6 @@ export async function getThresholdsFromBackend(): Promise<{ temperature_max: num
   try {
     const response = await axios.get(THRESHOLDS_ENDPOINT);
     const data = response.data;
-
     return {
       temperature_max: data.temperatureMaxThreshold,
       humidity_min: data.humidityMinThreshold

@@ -32,6 +32,7 @@ app.get("/irrigation/status", (req: Request, res: Response) => {
 app.get("/irrigation/thresholds", async (req: Request, res: Response) => {
   try {
     const response = await getThresholdsFromBackend();
+    console.log("Thresholds obtenidos del backend:", response);
     if (response) {
       res.json(response);
     } else {
