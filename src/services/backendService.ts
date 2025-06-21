@@ -4,6 +4,7 @@ import {
   TEMPERATURE_ENDPOINT,
   HUMIDITY_ENDPOINT,
   VOLUME_ENDPOINT,
+  THRESHOLDS_ENDPOINT
 } from "../constants/backend";
 import { SensorData } from "../types/sensor";
 
@@ -29,5 +30,20 @@ export async function sendDataToBackend(data: SensorData): Promise<void> {
     console.log("Datos enviados al nuevo endpoint del backend Spring Boot");
   } catch (error) {
     console.error("Error enviando datos al backend:", error);
+  }
+}
+
+export async function getThresholdsFromBackend(): Promise<{ temperature_max: number, humidity_min: number } | null> {
+  try {
+    const response = await axios.get(THRESHOLDS_ENDPOINT);
+    const data = response.data;
+
+    return {
+      temperature_max: data.temperatureMaxThreshold,
+      humidity_min: data.humidityMinThreshold
+    };
+  } catch (error) {
+    console.error("Error obteniendo thresholds del backend:", error);
+    return null;
   }
 }
