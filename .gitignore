@@ -20,3 +20,6 @@ pnpm-debug.log*
 .idea/
 
 .github/
+
+JUSTBYME.md
+MIGRATION_COMPLETE.md

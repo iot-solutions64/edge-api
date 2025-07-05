@@ -3,20 +3,29 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
+    "_old_dev": "echo 'Legacy src removed'",
+    "_old_build": "echo 'Legacy src removed'",
+    "_old_start": "echo 'Legacy src removed'",
+    "dev": "ts-node src/main.ts",
     "build": "tsc",
-    "start": "node dist/index.ts"
+    "start": "node dist/main.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/sql.js": "^1.4.9",
+    "@types/uuid": "^10.0.0",
     "axios": "^1.6.8",
+    "better-sqlite3": "^12.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mqtt": "^5.13.1"
+    "mqtt": "^5.13.1",
+    "sql.js": "^1.13.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
