@@ -33,6 +33,25 @@ async function startServer() {
     // Puerto del servidor
     const PORT = process.env.PORT || 3000;
 
+    // Enviar thresholds periódicamente por MQTT
+    setInterval(async () => {
+      try {
+        const thresholds = await container.backendService.getThresholds();
+
+        if (thresholds) {
+          container.mqttService.publishConfigUpdate(
+            thresholds.temperatureMax,
+            thresholds.humidityMin
+          );
+        } else {
+          console.warn("No se pudo obtener los thresholds desde el backend.");
+        }
+        console.log("📡 Thresholds enviados por MQTT");
+      } catch (error) {
+        console.error("❌ Error al enviar thresholds por MQTT:", error);
+      }
+    }, 60_000); // cada 60 segundos
+
     // Iniciar el servidor
     app.listen(PORT, () => {
       console.log(`🚀 Edge API DDD listening on port ${PORT}`);

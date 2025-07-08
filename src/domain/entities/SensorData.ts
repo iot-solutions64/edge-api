@@ -36,8 +36,11 @@ export class SensorData {
     );
   }
 
-  public shouldIrrigate(humidityThreshold: number = 30): boolean {
-    return this.humidity < humidityThreshold;
+  public shouldIrrigate(humidityThreshold: number = 30, temperatureThreshold: number = 20): boolean {
+    return (
+      this.humidity < humidityThreshold &&
+      this.temperature > temperatureThreshold
+    );
   }
 
   public toJSON(): any {
