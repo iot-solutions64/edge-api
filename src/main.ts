@@ -50,7 +50,7 @@ async function startServer() {
       } catch (error) {
         console.error("❌ Error al enviar thresholds por MQTT:", error);
       }
-    }, 60_000); // cada 60 segundos
+    }, 20_000); // cada 20 segundos
 
     // Iniciar el servidor
     app.listen(PORT, () => {
