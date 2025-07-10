@@ -49,7 +49,7 @@ Este documento contiene las historias de usuario que se han definido para el pro
   - Y la página mostrará todos los datos importantes del suelo, junto con un botón "Acciones Recomendadas"
   - Y el mensaje "Suelo seco, se requiere acción inmediata" es mostrado
 
-## US09: Verificar temperatura del suelo	
+## TS-US09: Verificar temperatura del suelo	
 
 **Como** desarrollador  
 **Quiero** agregar un indicador de la temperatura del suelo  
